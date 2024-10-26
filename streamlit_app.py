@@ -71,6 +71,7 @@ if seleccion_menu == "Jefe de grupo":
                 conexion.close()
 
                #FUNCION PARA QUE PONGA LA ASISTENCIA
+        
 
 
         
