@@ -62,10 +62,44 @@ if seleccion_menu == "Jefe de grupo":
         
         if seleccion_jefe == "Asignar Asistencia":
                 st.write("Asignar asistencias")
-                        
+                #CONEXION A LA BASE DE DATOS
+                conect= sqlite3.connect(''BasePrueba/ProfesoresPrueba.db'')
+                selcar = pd.read_sql("SELECT DISTINCT Carrera FROM carreraalumn;", conect)
+                st.write("  \n")
+                selec_carrera= st.selectbox('Selecciona la carrera a la que perteneces:', selcar['carrera'])
+                cursor = conexion.cursor()
+                conexion.close()
+
+               #FUNCION PARA QUE PONGA LA ASISTENCIA
+
+
+        
         if seleccion_jefe == "Modificar Asistencia":
                 st.write("Modificar asistencias")
-                
+                #CONEXION A LA BASE DE DATOS
+                conect= sqlite3.connect(''BasePrueba/ProfesoresPrueba.db'')
+                selcar = pd.read_sql("SELECT DISTINCT Carrera FROM carreraalumn;", conect)
+                st.write("  \n")
+                selec_carrera= st.selectbox('Selecciona la carrera a la que perteneces:', selcar['carrera'])
+                cursor = conexion.cursor()
+                conexion.close()
+
+               #FUNCION PARA MODIFICAR LA ASISTENCIA
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
