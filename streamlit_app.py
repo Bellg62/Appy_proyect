@@ -6,8 +6,7 @@ from fpdf import FPDF
 import mysql.connector
 import datetime
 
-import streamlit config set 
-[theme]
+config set [theme]
 font = "Helvetica Neue"
 [theme]
 primaryColor = "#E8CDF7"
