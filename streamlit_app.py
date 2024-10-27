@@ -69,16 +69,15 @@ if seleccion_menu == "Jefe de grupo":
                 st.write("  \n")
                 #selec_carrera= st.selectbox('Selecciona la carrera a la que perteneces:', selcar['Carrera'])
                 if carreraa == 'ICI':
-                cursor.execute('''
-                  CREATE TABLE IF NOT EXISTS clases_programadas (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    maestro TEXT,
-                    materia TEXT,
-                    fecha TEXT,
-                    hora TEXT,
-                    asistencia INTEGER,
-                )
-                ''')
+                        cursor.execute('''
+                                  CREATE TABLE IF NOT EXISTS clases_programadas (
+                                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                    maestro TEXT,
+                                    materia TEXT,
+                                    fecha TEXT,
+                                    hora TEXT,
+                                    asistencia INTEGER, )
+                        ''')
                 conexion.commit()
                 maestro = st.selectbox("Selecciona un maestro:", ["Carlos Martínez", "Laura Gómez", "Miguel Sánchez", "Ana Torres", "Sofía Rodríguez", "Pedro Hernández", "Walter Mata", "Victor Castillo", "Francisco Ochoa", "Quintero",])
                 materia = st.selectbox("Selecciona una materia:", ["Introducción a la Electrónica", "Programación icónica", "Proyectos de Ingeniería", "Electrónica de Potencia", "Emprendimiento", "Inglés V", "Fundamentos de Programación", "Estadística", "Programación", "Estructura de Datos", "Programación Avanzada", "Robótica"])
