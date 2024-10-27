@@ -71,6 +71,7 @@ if seleccion_menu == "Jefe de grupo":
                 cursor = conect.cursor()
                 conect.close()
 
+                
               
                #FUNCION PARA QUE PONGA LA ASISTENCIA
                 def ponerasistencia():
