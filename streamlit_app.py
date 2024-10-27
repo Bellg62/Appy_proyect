@@ -6,7 +6,7 @@ from fpdf import FPDF
 import mysql.connector
 import datetime
 
-config set [theme]
+[theme]
 font = "Helvetica Neue"
 [theme]
 primaryColor = "#E8CDF7"
