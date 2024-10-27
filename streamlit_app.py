@@ -6,6 +6,13 @@ from fpdf import FPDF
 import mysql.connector
 import datetime
 
+st.markdown(
+    """
+    <link rel="stylesheet" type="text/css" href="https://www.example.com/style.css">
+    """,
+    unsafe_allow_html=True
+)
+
 st.sidebar.image(image='img/img/LogoPerla.png',caption="")
 st.sidebar.caption("Bienvenido!.")
 
