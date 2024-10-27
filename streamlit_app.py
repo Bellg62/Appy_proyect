@@ -75,7 +75,7 @@ if seleccion_menu == "Jefe de grupo":
                 cursor3 = conector.cursor()
                 cursor4 = conector.cursor()
                 cursor1.execute("SELECT * FROM materiaprofe WHERE Carrera=?",(selec_carrera,))
-                cursor3.execute("SELECT COUNT(Profesor) FROM materiaprofe WHERE Carrera=?".(selec_carrera,))
+                cursor3.execute("SELECT COUNT(Profesor) FROM materiaprofe WHERE Carrera=?",(selec_carrera,))
                 cursor2.execute("SELECT COUNT(Materia) FROM materiaprofe WHERE Carrera=?",(selec_carrera,))
                 cursor4.execute("SELECT COUNT(Asistencia) FROM materiaprofe WHERE Carrera=? AND Asistencia IS NULL",(selec_carrera,))
                 # Recuperar todos los registros
