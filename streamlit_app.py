@@ -6,13 +6,27 @@ from fpdf import FPDF
 import mysql.connector
 import datetime
 
-[theme]
-font = "Helvetica Neue"
-[theme]
-primaryColor = "#E8CDF7"
-backgroundColor = "#F5F5BF"
-secondaryBackgroundColor = "#F7CFF5"
-textColor = "#000000"
+# Configuración de la página
+st.set_page_config(
+    page_title="Mi aplicación",
+    page_icon="📊",
+    layout="wide",
+    initial_sidebar_state="expanded",)
+# Estilos y temas
+st.markdown("""
+    <style>
+    .reportview-container .main .block-container {
+        font-family: 'Helvetica Neue', sans-serif}
+    .reportview-container .main {
+        background-color: #F5F5BF
+        color: #000000}
+    .sidebar .sidebar-content {
+        background-color: #F7CFF5}
+    .sidebar .sidebar-content .primary-text {
+        color: #000000}
+    .sidebar .sidebar-content .stButton > button {
+        background-color: #E8CDF7}
+    </style>""", unsafe_allow_html=True)
 
 st.sidebar.image(image='img/img/LogoPerla.png',caption="")
 st.sidebar.caption("Bienvenido!.")
