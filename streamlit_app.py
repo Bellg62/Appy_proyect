@@ -67,24 +67,6 @@ if seleccion_menu == "Jefe de grupo":
                 cursor=  conexion.cursor()
                 carreraa = st.selectbox("Selecciona la carrera a l aque perteneces:", ["ICI","ISET"])
                 st.write("  \n")
-                maestros_por_materia = {
-                        "ISET": {
-                                "Introducción a la Electronica": "Carlos Martínez",
-                                "Programación icónica": "Laura Gómez",
-                                "Proyectos de Ingenieria": "Miguel Sánchez",
-                                "Electronica de Potencia": "Ana Torres",
-                                "Emprendimiento": "Sofía Rodríguez",
-                                "Inglés V": "Pedro Hernández"
-                        }
-                        "ICI": {
-                                "Fundamentos de Programación": "Walter Mata",
-                                "Estadística": "Victor Castillo",
-                                "Programación": "Walter Mata",
-                                "Estructura de Datos": "Francisco Ochoa",
-                                "Programación Avanzada": "Walter Mata",
-                                "Robótica": "Quintero"
-                        }
-                }
                 if carreraa == 'ICI':
                         conexion = sqlite3.connect('asistencias.db')
                         cursor = conexion.cursor()
@@ -102,8 +84,6 @@ if seleccion_menu == "Jefe de grupo":
                         fecha = st.date_input("Selecciona la fecha de la clase:")
                         hora = st.time_input("Selecciona la hora de la clase:")
                         asistencia= st.number_input("Ingresa 1 si el profesor asistío o 0 si no asistió:", min_value=0, step=1,max_value=1)
-
-               
                 if carreraa == 'ISET':
                         conexion = sqlite3.connect('asistencias.db')
                         cursor = conexion.cursor()
@@ -122,7 +102,6 @@ if seleccion_menu == "Jefe de grupo":
                         fecha = st.date_input("Selecciona la fecha de la clase:")
                         asistencia= st.number_input("Ingresa 1 si el profesor asistío o 0 si no asistió:", min_value=0, step=1,max_value=1)
                         hora = st.time_input("Selecciona la hora de la clase:")
-
                 if st.button('Guardar Asistencia'):
                         cur_inrt = conexion.cursor()
                         for profesor in materiaprofe:
