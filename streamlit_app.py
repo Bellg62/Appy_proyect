@@ -8,7 +8,11 @@ import datetime
 
 st.markdown(
     """
-    <link rel="stylesheet" type="text/css" href="https://www.example.com/style.css">
+    <style>
+    .reportview-container {
+        background: url(""C:/Users/Colibecas/Downloads/img/cf9ae8ca689a12b0f30b48098b72f106.jpg"");
+    }
+   </style>
     """,
     unsafe_allow_html=True
 )
