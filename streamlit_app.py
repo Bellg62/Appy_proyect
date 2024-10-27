@@ -91,7 +91,7 @@ if seleccion_menu == "Jefe de grupo":
                                 Asistenciaprofeici = s3.fetchall()
                                 asistencia= st.number_input("¿Asistio el profesor? (Ingresa 1 si asistió y 0 si no asistió):",min_value=0, step=1 ,max_value=1)
                                 st.write(f"Asistencia registrada para el profesor {profe_ici} que imparte {matimparprofeici}.")
-                                                
+                                
                       
                 
         
