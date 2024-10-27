@@ -68,23 +68,33 @@ if seleccion_menu == "Jefe de grupo":
                 selcar = pd.read_sql("SELECT DISTINCT Carrera FROM materiaprofe;", conexion)
                 st.write("  \n")
                 selec_carrera= st.selectbox('Selecciona la carrera a la que perteneces:', selcar['Carrera'])
+
+                cursor1= conexion.cursor()
+                cursor2 = conexion.cursor()
+                cursor3 = conexion.cursor()
+                cursor4 = conexion.cursor()
                 
-               #Para poner la asistencia
-                cursor1= conector.cursor()
-                cursor2 = conector.cursor()
-                cursor3 = conector.cursor()
-                cursor4 = conector.cursor()
                 cursor1.execute("SELECT * FROM materiaprofe WHERE Carrera=?",(selec_carrera,))
                 cursor3.execute("SELECT COUNT(Profesor) FROM materiaprofe WHERE Carrera=?",(selec_carrera,))
                 cursor2.execute("SELECT COUNT(Materia) FROM materiaprofe WHERE Carrera=?",(selec_carrera,))
                 cursor4.execute("SELECT COUNT(Asistencia) FROM materiaprofe WHERE Carrera=? AND Asistencia IS NULL",(selec_carrera,))
+                
                 # Recuperar todos los registros
                 materiaprofe = cursor1.fetchall()
                 profe_ici = cursor2.fetchall()
                 matimparprofeici = cursor3.fetchall()
                 Asistenciaprofeici = cursor4.fetchall()
-                #asistencia= st.number_input("¿Asistio el profesor? (Ingresa 1 si asistió y 0 si no asistió):",min_value=0, step=1 ,max_value=1)
-                st.write(f"Asistencia registrada para el profesor {profe_ici} que imparte {matimparprofeici}.")
+
+                if st.button('Guardar Asistencia'):
+                    cur_inrt = conexion.cursor()
+                    for profesor in materiaprofe:
+                        cur_inrt.execute(
+                            "UPDATE materiaprofe SET Asistencia=? WHERE Profesor=? AND Materia=?",
+                            (asistencia, profesor[])  
+                        )
+                    conexion.commit()
+                st.success("Asistencia guardada correctamente.")
+                st.write(f"Asistencia registrada para el profesor {profe_ici} que imparte {matimparprofeici}."
                 conexion.close()
                                 
                       
