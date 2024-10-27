@@ -65,7 +65,7 @@ if seleccion_menu == "Jefe de grupo":
                 st.write("Asignar asistencias")
                 #CONEXION A LA BASE DE DATOS
                 conector= sqlite3.connect('BasePrueba/ProfesoresPrueba.db')
-                selcar = pd.read_sql("SELECT DISTINCT Carrera FROM materiaprofe;", conector)
+                selcar = pd.read_sql("SELECT DISTINCT Carrera FROM materiaprofe", conector)
                 st.write("  \n")
                 selec_carrera= st.selectbox('Selecciona la carrera a la que perteneces:', selcar['Carrera'])
                 conector.close()
