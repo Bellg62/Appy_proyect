@@ -75,7 +75,7 @@ if seleccion_menu == "Jefe de grupo":
                #FUNCION PARA QUE PONGA LA ASISTENCIA
                 def ponerasistencia():
                         if selec_carrera == 'ICI': 
-                                conect= sqlite3.connect(''BasePrueba/ProfesoresPrueba.db'')
+                                conect= sqlite3.connect('BasePrueba/ProfesoresPrueba.db')
                                 prof = pd.read_sql("SELECT DISTINCT Profesici FROM carreraalumn;", conect)
                                 st.write("  \n")
                                 selec_profesor = st.selectbox('Selecciona la carrera a la que perteneces:', prof['Profesici'])
@@ -101,7 +101,7 @@ if seleccion_menu == "Jefe de grupo":
         if seleccion_jefe == "Modificar Asistencia":
                 st.write("Modificar asistencias")
                 #CONEXION A LA BASE DE DATOS
-                conect= sqlite3.connect(''BasePrueba/ProfesoresPrueba.db'')
+                conect= sqlite3.connect('BasePrueba/ProfesoresPrueba.db')
                 selcar = pd.read_sql("SELECT DISTINCT Carrera FROM carreraalumn;", conect)
                 st.write("  \n")
                 selec_carrera= st.selectbox('Selecciona la carrera a la que perteneces:', selcar['Carrera'])
