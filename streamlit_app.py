@@ -55,6 +55,7 @@ if seleccion_menu == "Jefe de grupo":
         </span>
         """
         st.caption("Bienvenido Jefe de grupo!")
+        ##############################################################################################################
         seleccion_jefe = option_menu(
                 menu_title="Apartado de Asistencias",
                 options=["Asignar Asistencia","Modificar Asistencia"]
@@ -63,14 +64,36 @@ if seleccion_menu == "Jefe de grupo":
         if seleccion_jefe == "Asignar Asistencia":
                 st.write("Asignar asistencias")
                 #CONEXION A LA BASE DE DATOS
-                conect= sqlite3.connect(''BasePrueba/ProfesoresPrueba.db'')
+                conect= sqlite3.connect('BasePrueba/ProfesoresPrueba.db')
                 selcar = pd.read_sql("SELECT DISTINCT Carrera FROM carreraalumn;", conect)
                 st.write("  \n")
-                selec_carrera= st.selectbox('Selecciona la carrera a la que perteneces:', selcar['carrera'])
-                cursor = conexion.cursor()
-                conexion.close()
+                selec_carrera= st.selectbox('Selecciona la carrera a la que perteneces:', selcar['Carrera'])
+                cursor = conect.cursor()
+                conect.close()
 
+              
                #FUNCION PARA QUE PONGA LA ASISTENCIA
+                def ponerasistencia():
+                        if selec_carrera == 'ICI': 
+                                conect= sqlite3.connect(''BasePrueba/ProfesoresPrueba.db'')
+                                prof = pd.read_sql("SELECT DISTINCT Profesici FROM carreraalumn;", conect)
+                                st.write("  \n")
+                                selec_profesor = st.selectbox('Selecciona la carrera a la que perteneces:', prof['Profesici'])
+                                s1= conect.cursor()
+                                s2 = conect.cursor()
+                                s3 = conect.cursor()
+                                s1.execute("SELECT * FROM profe WHERE Profesor=?",(selec_profesor,))
+                                s2.execute("SELECT FROM materiaprofeici WHERE Profesor=?",(selec_profesor,))
+                                s3.execute("SELECT FROM materiaprofe WHERE Profesor=? AND Asistencia=NULL",(selec_profesor,))
+                                # Recuperar todos los registros
+                                profe_ici = s1.fetchall()
+                                matimparprofeici = s2.fetchall()
+                                Asistenciaprofeici = s3.fetchall()
+                                asistencia= st.number_input("¿Asistio el profesor? (Ingresa 1 si asistió y 0 si no asistió):",min_value=0, step=1 ,max_value=1)
+                                st.write(f"Asistencia registrada para el profesor {profe_ici} que imparte {matimparprofeici}.")
+                                                
+                      
+                
         
 
 
@@ -81,7 +104,7 @@ if seleccion_menu == "Jefe de grupo":
                 conect= sqlite3.connect(''BasePrueba/ProfesoresPrueba.db'')
                 selcar = pd.read_sql("SELECT DISTINCT Carrera FROM carreraalumn;", conect)
                 st.write("  \n")
-                selec_carrera= st.selectbox('Selecciona la carrera a la que perteneces:', selcar['carrera'])
+                selec_carrera= st.selectbox('Selecciona la carrera a la que perteneces:', selcar['Carrera'])
                 cursor = conexion.cursor()
                 conexion.close()
 
@@ -99,7 +122,7 @@ if seleccion_menu == "Jefe de grupo":
 
 
 
-
+######################################################################################################################################################
         
         st.write("  \n")
         st.write("  \n")
