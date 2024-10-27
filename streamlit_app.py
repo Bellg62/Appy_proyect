@@ -10,7 +10,7 @@ st.markdown(
     """
     <style>
     .reportview-container {
-        background: url(""C:/Users/Colibecas/Downloads/img/cf9ae8ca689a12b0f30b48098b72f106.jpg"");
+        background= (image= 'img/img/cf9ae8ca689a12b0f30b48098b72f106.jpg')
     }
    </style>
     """,
