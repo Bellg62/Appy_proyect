@@ -64,25 +64,43 @@ if seleccion_menu == "Jefe de grupo":
                 st.write("Asignar asistencias")
                 #CONEXION A LA BASE DE DATOS
                 conexion = sqlite3.connect('BasePrueba/ProfesoresPrueba.db')
-                selcar = pd.read_sql("SELECT DISTINCT Carrera FROM materiaprofe", conexion)
+                #selcar = pd.read_sql("SELECT DISTINCT Carrera FROM materiaprofe", conexion)
+                carreraa = st.selectbox("Selecciona la carrera a l aque perteneces:", ["ICI","ISET"])
                 st.write("  \n")
-                selec_carrera= st.selectbox('Selecciona la carrera a la que perteneces:', selcar['Carrera'])
+                #selec_carrera= st.selectbox('Selecciona la carrera a la que perteneces:', selcar['Carrera'])
+                if carreraa == 'ICI':
+                cursor.execute('''
+                  CREATE TABLE IF NOT EXISTS clases_programadas (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    maestro TEXT,
+                    materia TEXT,
+                    fecha TEXT,
+                    hora TEXT,
+                    asistencia INTEGER,
+                )
+                ''')
+                conexion.commit()
+                maestro = st.selectbox("Selecciona un maestro:", ["Carlos Martínez", "Laura Gómez", "Miguel Sánchez", "Ana Torres", "Sofía Rodríguez", "Pedro Hernández", "Walter Mata", "Victor Castillo", "Francisco Ochoa", "Quintero",])
+                materia = st.selectbox("Selecciona una materia:", ["Introducción a la Electrónica", "Programación icónica", "Proyectos de Ingeniería", "Electrónica de Potencia", "Emprendimiento", "Inglés V", "Fundamentos de Programación", "Estadística", "Programación", "Estructura de Datos", "Programación Avanzada", "Robótica"])
+                fecha = st.date_input("Selecciona la fecha de la clase:")
+                hora = st.time_input("Selecciona la hora de la clase:")
+                asistencia= st.number-INPUT("Ingresa 1 si el profesor asistío o 0 si no asistió:", min_value=0, step=1,max_value=1)
 
-                cursor1= conexion.cursor()
-                cursor2 = conexion.cursor()
-                cursor3 = conexion.cursor()
-                cursor4 = conexion.cursor()
+                #cursor1= conexion.cursor()
+                #cursor2 = conexion.cursor()
+                #cursor3 = conexion.cursor()
+                #cursor4 = conexion.cursor()
                 
-                cursor1.execute("SELECT * FROM materiaprofe WHERE Carrera=?",(selec_carrera,))
-                cursor3.execute("SELECT COUNT(Profesor) FROM materiaprofe WHERE Carrera=?",(selec_carrera,))
-                cursor2.execute("SELECT COUNT(Materia) FROM materiaprofe WHERE Carrera=?",(selec_carrera,))
-                cursor4.execute("SELECT COUNT(Asistencia) FROM materiaprofe WHERE Carrera=? AND Asistencia IS NULL",(selec_carrera,))
+                #cursor1.execute("SELECT * FROM materiaprofe WHERE Carrera=?",(selec_carrera,))
+                #cursor3.execute("SELECT COUNT(Profesor) FROM materiaprofe WHERE Carrera=?",(selec_carrera,))
+                #cursor2.execute("SELECT COUNT(Materia) FROM materiaprofe WHERE Carrera=?",(selec_carrera,))
+                #cursor4.execute("SELECT COUNT(Asistencia) FROM materiaprofe WHERE Carrera=? AND Asistencia IS NULL",(selec_carrera,))
                 
                 # Recuperar todos los registros
-                materiaprofe = cursor1.fetchall()
-                profe_ici = st.selectbox('Selecciona Tu profesor:', cursor2.fetchall())
-                matimparprofeici = st.selectbox('Selecciona la materia que imparte:',cursor3.fetchall())
-                Asistenciaprofeici = st.selectbox('Ingresa si asistió (si asistió inserta 1 y si no asistió inserta 0):',cursor4.fetchall())
+                #materiaprofe = cursor1.fetchall()
+                #profe_ici = st.selectbox('Selecciona Tu profesor:', cursor2.fetchall())
+                #matimparprofeici = st.selectbox('Selecciona la materia que imparte:',cursor3.fetchall())
+                #Asistenciaprofeici = st.selectbox('Ingresa si asistió (si asistió inserta 1 y si no asistió inserta 0):',cursor4.fetchall())
 
                 if st.button('Guardar Asistencia'):
                     cur_inrt = conexion.cursor()
