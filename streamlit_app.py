@@ -64,28 +64,28 @@ if seleccion_menu == "Jefe de grupo":
         if seleccion_jefe == "Asignar Asistencia":
                 st.write("Asignar asistencias")
                 #CONEXION A LA BASE DE DATOS
-                conector= sqlite3.connect('BasePrueba/ProfesoresPrueba.db')
-                selcar = pd.read_sql("SELECT DISTINCT Carrera FROM materiaprofe", conector)
+                conexion = sqlite3.connect('BasePrueba/ProfesoresPrueba.db')
+                selcar = pd.read_sql("SELECT DISTINCT Carrera FROM materiaprofe;", conexion)
                 st.write("  \n")
                 selec_carrera= st.selectbox('Selecciona la carrera a la que perteneces:', selcar['Carrera'])
-                conector.close()
-
+                
                #Para poner la asistencia
-                if selec_carrera == 'ICI': 
-                        conector= sqlite3.connect('BasePrueba/ProfesoresPrueba.db')
-                        cursor1= conector.cursor()
-                        cursor2 = conector.cursor()
-                        cursor3 = conector.cursor()
-                        cursor1.execute("SELECT * FROM materiaprofe WHERE Profesor=?",(selec_carrera,))
-                        cursor2.execute("SELECT COUNT(Materia) FROM materiaprofe WHERE Profesor=?",(selec_carrera,))
-                        cursor3.execute("SELECT COUNT(Asistencia) FROM materiaprofe WHERE Profesor=? AND Asistencia IS NULL",(selec_carrera,))
-                        # Recuperar todos los registros
-                        profe_ici = cursor1.fetchall()
-                        matimparprofeici = cursor2.fetchall()
-                        Asistenciaprofeici = cursor3.fetchall()
-                        #asistencia= st.number_input("¿Asistio el profesor? (Ingresa 1 si asistió y 0 si no asistió):",min_value=0, step=1 ,max_value=1)
-                        st.write(f"Asistencia registrada para el profesor {profe_ici} que imparte {matimparprofeici}.")
-                        conector.close()
+                cursor1= conector.cursor()
+                cursor2 = conector.cursor()
+                cursor3 = conector.cursor()
+                cursor4 = conector.cursor()
+                cursor1.execute("SELECT * FROM materiaprofe WHERE Carrera=?",(selec_carrera,))
+                cursor3.execute("SELECT COUNT(Profesor) FROM materiaprofe WHERE Carrera=?".(selec_carrera,))
+                cursor2.execute("SELECT COUNT(Materia) FROM materiaprofe WHERE Carrera=?",(selec_carrera,))
+                cursor4.execute("SELECT COUNT(Asistencia) FROM materiaprofe WHERE Carrera=? AND Asistencia IS NULL",(selec_carrera,))
+                # Recuperar todos los registros
+                materiaprofe = cursor1.fetchall()
+                profe_ici = cursor2.fetchall()
+                matimparprofeici = cursor3.fetchall()
+                Asistenciaprofeici = cursor4.fetchall()
+                #asistencia= st.number_input("¿Asistio el profesor? (Ingresa 1 si asistió y 0 si no asistió):",min_value=0, step=1 ,max_value=1)
+                st.write(f"Asistencia registrada para el profesor {profe_ici} que imparte {matimparprofeici}.")
+                conexion.close()
                                 
                       
                 
