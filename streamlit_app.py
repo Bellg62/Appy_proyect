@@ -68,22 +68,23 @@ if seleccion_menu == "Jefe de grupo":
                 carreraa = st.selectbox("Selecciona la carrera a l aque perteneces:", ["ICI","ISET"])
                 st.write("  \n")
                 maestros_por_materia = {
-                "ISET": {
-                        "Introducción a la Electronica": "Carlos Martínez",
-                        "Programación icónica": "Laura Gómez",
-                        "Proyectos de Ingenieria": "Miguel Sánchez",
-                        "Electronica de Potencia": "Ana Torres",
-                        "Emprendimiento": "Sofía Rodríguez",
-                        "Inglés V": "Pedro Hernández"
-                },
-                "ICI": {
-                        "Fundamentos de Programación": "Walter Mata",
-                        "Estadística": "Victor Castillo",
-                        "Programación": "Walter Mata",
-                        "Estructura de Datos": "Francisco Ochoa",
-                        "Programación Avanzada": "Walter Mata",
-                        "Robótica": "Quintero"
-                }}
+                        "ISET": {
+                                "Introducción a la Electronica": "Carlos Martínez",
+                                "Programación icónica": "Laura Gómez",
+                                "Proyectos de Ingenieria": "Miguel Sánchez",
+                                "Electronica de Potencia": "Ana Torres",
+                                "Emprendimiento": "Sofía Rodríguez",
+                                "Inglés V": "Pedro Hernández"
+                        }
+                        "ICI": {
+                                "Fundamentos de Programación": "Walter Mata",
+                                "Estadística": "Victor Castillo",
+                                "Programación": "Walter Mata",
+                                "Estructura de Datos": "Francisco Ochoa",
+                                "Programación Avanzada": "Walter Mata",
+                                "Robótica": "Quintero"
+                        }
+                }
                 if carreraa == 'ICI':
                         conexion = sqlite3.connect('asistencias.db')
                         cursor = conexion.cursor()
