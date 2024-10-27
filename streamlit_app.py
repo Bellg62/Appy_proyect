@@ -6,7 +6,7 @@ from fpdf import FPDF
 import mysql.connector
 import datetime
 
-st.sidebar.image(image='img7img/
+st.sidebar.image(image='img7img/cf9ae8ca689a12b0f30b48098b72f106.jpg',caption="")
 st.sidebar.image(image='img/img/LogoPerla.png',caption="")
 st.sidebar.caption("Bienvenido!.")
 
