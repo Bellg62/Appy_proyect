@@ -535,8 +535,7 @@ if seleccion_menu == "Administrador":
                 if st.button("Agregar Clase"):
                         cursor.execute('''
                         INSERT INTO clases_programadas (maestro, materia, fecha, hora)
-                        VALUES (?, ?, ?, ?)
-                        ''', (maestro, materia, str(fecha), str(hora)))
+                        VALUES (?, ?, ?, ?)''', (maestro, materia, str(fecha), str(hora)))
                         conexion.commit()
                         st.success(f"Clase programada para {materia} con {maestro} el {fecha} a las {hora} ha sido agregada exitosament.")
                         conexion.close()
