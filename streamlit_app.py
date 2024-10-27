@@ -6,16 +6,14 @@ from fpdf import FPDF
 import mysql.connector
 import datetime
 
-st.markdown(
-    """
-    <style>
-    .reportview-container {
-        background= (image= 'img/img/cf9ae8ca689a12b0f30b48098b72f106.jpg')
-    }
-   </style>
-    """,
-    unsafe_allow_html=True
-)
+import streamlit config set [theme]
+[theme]
+font = "Helvetica Neue"
+[theme]
+primaryColor = "#E8CDF7"
+backgroundColor = "#F5F5BF"
+secondaryBackgroundColor = "#F7CFF5"
+textColor = "#000000"
 
 st.sidebar.image(image='img/img/LogoPerla.png',caption="")
 st.sidebar.caption("Bienvenido!.")
