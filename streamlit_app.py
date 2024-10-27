@@ -94,7 +94,7 @@ if seleccion_menu == "Jefe de grupo":
                         )
                     conexion.commit()
                 st.success("Asistencia guardada correctamente.")
-                st.write(f"Asistencia registrada para el profesor {profe_ici} que imparte {matimparprofeici}."
+                st.write(f"Asistencia registrada para el profesor {profe_ici} que imparte {matimparprofeici}.")
                 conexion.close()
                                 
                       
