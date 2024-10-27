@@ -83,7 +83,7 @@ if seleccion_menu == "Jefe de grupo":
                 materia = st.selectbox("Selecciona una materia:", ["Introducción a la Electrónica", "Programación icónica", "Proyectos de Ingeniería", "Electrónica de Potencia", "Emprendimiento", "Inglés V", "Fundamentos de Programación", "Estadística", "Programación", "Estructura de Datos", "Programación Avanzada", "Robótica"])
                 fecha = st.date_input("Selecciona la fecha de la clase:")
                 hora = st.time_input("Selecciona la hora de la clase:")
-                asistencia= st.number-INPUT("Ingresa 1 si el profesor asistío o 0 si no asistió:", min_value=0, step=1,max_value=1)
+                asistencia= st.number_input("Ingresa 1 si el profesor asistío o 0 si no asistió:", min_value=0, step=1,max_value=1)
 
                 #cursor1= conexion.cursor()
                 #cursor2 = conexion.cursor()
