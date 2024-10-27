@@ -68,7 +68,7 @@ if seleccion_menu == "Jefe de grupo":
                 carreraa = st.selectbox("Selecciona la carrera a l aque perteneces:", ["ICI","ISET"])
                 st.write("  \n")
                 maestros_por_materia = {
-                        "ISET": {
+                        "ISET":{
                                 "Introducción a la Electronica": "Carlos Martínez",
                                 "Programación icónica": "Laura Gómez",
                                 "Proyectos de Ingenieria": "Miguel Sánchez",
@@ -76,7 +76,7 @@ if seleccion_menu == "Jefe de grupo":
                                 "Emprendimiento": "Sofía Rodríguez",
                                 "Inglés V": "Pedro Hernández"
                         }
-                        "ICI": {
+                        "ICI":{
                                 "Fundamentos de Programación": "Walter Mata",
                                 "Estadística": "Victor Castillo",
                                 "Programación": "Walter Mata",
