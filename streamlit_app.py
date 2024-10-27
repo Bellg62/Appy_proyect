@@ -59,7 +59,28 @@ if seleccion_menu == "Jefe de grupo":
                 menu_title="Apartado de Asistencias",
                 options=["Asignar Asistencia","Modificar Asistencia"]
         )
+
         
+         maestros_por_materia = {
+                "ISET": {
+                        "Introducción a la Electronica": "Carlos Martínez",
+                        "Programación icónica": "Laura Gómez",
+                        "Proyectos de Ingenieria": "Miguel Sánchez",
+                        "Electronica de Potencia": "Ana Torres",
+                        "Emprendimiento": "Sofía Rodríguez",
+                        "Inglés V": "Pedro Hernández"
+                },
+                "ICI": {
+                        "Fundamentos de Programación": "Walter Mata",
+                        "Estadística": "Victor Castillo",
+                        "Programación": "Walter Mata",
+                        "Estructura de Datos": "Francisco Ochoa",
+                        "Programación Avanzada": "Walter Mata",
+                        "Robótica": "Quintero"
+                }
+        }
+
+
         if seleccion_jefe == "Asignar Asistencia":
                 st.write("Asignar asistencias")
                 #CONEXION A LA BASE DE DATOS
