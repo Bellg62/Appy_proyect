@@ -90,7 +90,7 @@ if seleccion_menu == "Jefe de grupo":
                     for profesor in materiaprofe:
                         cur_inrt.execute(
                             "UPDATE materiaprofe SET Asistencia=? WHERE Profesor=? AND Materia=?",
-                            (asistencia, profesor[])  
+                            (asistencia, profesor[""])  
                         )
                     conexion.commit()
                 st.success("Asistencia guardada correctamente.")
@@ -125,12 +125,12 @@ if seleccion_menu == "Jefe de grupo":
                 seleccion_materia = st.selectbox("Selecciona la materia", [materia[0] for materia in materias])
         
                 # Modificación de asistencia
-                nueva_asistencia = st.number_input("Nueva asistencia (1 para asistió, 0 para no asistió)", min_value=0, max_value=1, step=1)
+                n_asist = st.number_input("Nueva asistencia (1 para asistió, 0 para no asistió)", min_value=0, max_value=1, step=1)
         
                 if st.button("Guardar Cambios"):
                     cursor.execute(
                         "UPDATE materiaprofe SET Asistencia=%s, FechaModificacion=%s WHERE Profesor=%s AND Materia=%s",
-                        (nueva_asistencia, datetime.now(), seleccion_profesor, seleccion_materia)
+                        (n_asist, datetime.now(), seleccion_profesor, seleccion_materia)
                     )
                     conexion.commit()
                     st.success("Asistencia modificada correctamente.")
