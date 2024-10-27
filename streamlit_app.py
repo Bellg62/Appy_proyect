@@ -60,46 +60,16 @@ if seleccion_menu == "Jefe de grupo":
                 options=["Asignar Asistencia","Modificar Asistencia"]
         )
 
-        
-         maestros_por_materia = {
-                "ISET": {
-                        "Introducción a la Electronica": "Carlos Martínez",
-                        "Programación icónica": "Laura Gómez",
-                        "Proyectos de Ingenieria": "Miguel Sánchez",
-                        "Electronica de Potencia": "Ana Torres",
-                        "Emprendimiento": "Sofía Rodríguez",
-                        "Inglés V": "Pedro Hernández"
-                },
-                "ICI": {
-                        "Fundamentos de Programación": "Walter Mata",
-                        "Estadística": "Victor Castillo",
-                        "Programación": "Walter Mata",
-                        "Estructura de Datos": "Francisco Ochoa",
-                        "Programación Avanzada": "Walter Mata",
-                        "Robótica": "Quintero"
-                }
-        }
-
-
         if seleccion_jefe == "Asignar Asistencia":
                 st.write("Asignar asistencias")
                 #CONEXION A LA BASE DE DATOS
                 conexion = sqlite3.connect('BasePrueba/ProfesoresPrueba.db')
                 cursor=  conexion.cursor()
-                carreraa = st.selectbox("Selecciona la carrera a l aque perteneces:", ["ICI","ISET"])
+                carreraa = st.selectbox("Selecciona la carrera a la que perteneces:", ["ICI","ISET"])
                 st.write("  \n")
                 if carreraa == 'ICI':
                         conexion = sqlite3.connect('asistencias.db')
                         cursor = conexion.cursor()
-                        CREATE TABLE IF NOT EXISTS clases_programadas (
-                            id INTEGER PRIMARY KEY AUTOINCREMENT,
-                            profesor TEXT,
-                            materia TEXT,
-                            fecha TEXT,
-                            hora TEXT,
-                            asistencia INTEGER)
-                        ''')
-                        conexion.commit()
                         profesor = st.selectbox("Selecciona un maestro:", ["Walter Mata", "Victor Castillo", "Francisco Ochoa", "Quintero",])
                         materia = st.selectbox("Selecciona una materia:", ["Fundamentos de Programación", "Estadística", "Programación", "Estructura de Datos", "Programación Avanzada", "Robótica"])
                         fecha = st.date_input("Selecciona la fecha de la clase:")
@@ -108,16 +78,6 @@ if seleccion_menu == "Jefe de grupo":
                 if carreraa == 'ISET':
                         conexion = sqlite3.connect('asistencias.db')
                         cursor = conexion.cursor()
-                        cursor.execute('''
-                        CREATE TABLE IF NOT EXISTS clases_programadas (
-                            id INTEGER PRIMARY KEY AUTOINCREMENT,
-                            profesor TEXT,
-                            materia TEXT,
-                            fecha TEXT,
-                            hora TEXT,
-                            asistencia INTEGER)
-                        ''')
-                        conexion.commit()
                         maestro = st.selectbox("Selecciona un maestro:", ["Carlos Martínez", "Laura Gómez", "Miguel Sánchez", "Ana Torres", "Sofía Rodríguez", "Pedro Hernández"])
                         materia = st.selectbox("Selecciona una materia:", ["Introducción a la Electrónica", "Programación icónica", "Proyectos de Ingeniería", "Electrónica de Potencia", "Emprendimiento", "Inglés V"])
                         fecha = st.date_input("Selecciona la fecha de la clase:")
