@@ -55,7 +55,7 @@ if seleccion_menu == "Jefe de grupo":
         </span>
         """
         st.caption("Bienvenido Jefe de grupo!")
-        ##############################################################################################################
+######################################################################################################################################################
         seleccion_jefe = option_menu(
                 menu_title="Apartado de Asistencias",
                 options=["Asignar Asistencia","Modificar Asistencia"]
@@ -65,7 +65,7 @@ if seleccion_menu == "Jefe de grupo":
                 st.write("Asignar asistencias")
                 #CONEXION A LA BASE DE DATOS
                 conexion = sqlite3.connect('BasePrueba/ProfesoresPrueba.db')
-                selcar = pd.read_sql("SELECT DISTINCT Carrera FROM materiaprofe;", conexion)
+                selcar = pd.read_sql("SELECT DISTINCT Carrera FROM materiaprofe", conexion)
                 st.write("  \n")
                 selec_carrera= st.selectbox('Selecciona la carrera a la que perteneces:', selcar['Carrera'])
 
@@ -81,9 +81,9 @@ if seleccion_menu == "Jefe de grupo":
                 
                 # Recuperar todos los registros
                 materiaprofe = cursor1.fetchall()
-                profe_ici = cursor2.fetchall()
-                matimparprofeici = cursor3.fetchall()
-                Asistenciaprofeici = cursor4.fetchall()
+                profe_ici = st.selectbox('Selecciona Tu profesor:', cursor2.fetchall())
+                matimparprofeici = st.selectbox('Selecciona la materia que imparte:',cursor3.fetchall())
+                Asistenciaprofeici = st.selectbox('Ingresa si asistió (si asistió inserta 1 y si no asistió inserta 0):',cursor4.fetchall())
 
                 if st.button('Guardar Asistencia'):
                     cur_inrt = conexion.cursor()
@@ -100,7 +100,7 @@ if seleccion_menu == "Jefe de grupo":
                       
                 
         
-
+           ####################################################################
 
         
         if seleccion_jefe == "Modificar Asistencia":
@@ -114,17 +114,29 @@ if seleccion_menu == "Jefe de grupo":
                 conexion.close()
 
                #FUNCION PARA MODIFICAR LA ASISTENCIA
+                
+                cursor = conexion.cursor()
+              
+                seleccion_profesor = st.selectbox("Selecciona el profesor", [profesor[0] for profesor in profesores])
+        
+                # Selección de la materia
+                cursor.execute("SELECT DISTINCT Materia FROM materiaprofe WHERE Profesor=%s", (seleccion_profesor,))
+                materias = cursor.fetchall()
+                seleccion_materia = st.selectbox("Selecciona la materia", [materia[0] for materia in materias])
+        
+                # Modificación de asistencia
+                nueva_asistencia = st.number_input("Nueva asistencia (1 para asistió, 0 para no asistió)", min_value=0, max_value=1, step=1)
+        
+                if st.button("Guardar Cambios"):
+                    cursor.execute(
+                        "UPDATE materiaprofe SET Asistencia=%s, FechaModificacion=%s WHERE Profesor=%s AND Materia=%s",
+                        (nueva_asistencia, datetime.now(), seleccion_profesor, seleccion_materia)
+                    )
+                    conexion.commit()
+                    st.success("Asistencia modificada correctamente.")
+                    conexion.close()    
 
-
-
-
-
-
-
-
-
-
-
+    
 
 
 ######################################################################################################################################################
